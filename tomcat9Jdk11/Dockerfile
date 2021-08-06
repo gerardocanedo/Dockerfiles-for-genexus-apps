@@ -10,6 +10,7 @@ ENV CATALINA_OPTS="$CATALINA_OPTS -XX:+UseStringDeduplication -XX:+OptimizeStrin
 RUN cat conf/web.xml | tr '\n' '\r' | sed -e 's@<servlet\-mapping>.*<servlet\-name>jsp</servlet\-name>.*</servlet\-mapping>@@g'  | tr '\r' '\n' > /tmp/web.tmp
 
 # DISABLE JSP mapping. No needed for GX
+# Webapps does not works if JspServlet is not preseent
 #RUN cat /tmp/web.tmp | tr '\n' '\r' | sed -e 's@<servlet>.*<servlet\-class>org\.apache\.jasper\.servlet\.JspServlet</servlet\-class>.*</servlet>@@g'  | tr '\r' '\n' > conf/web.xml
 
 # ClickJacking & SAMEORIGIN
