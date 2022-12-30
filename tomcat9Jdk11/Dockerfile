@@ -14,3 +14,7 @@ RUN sed -i 's@</web\-app>@<filter><filter-name>httpHeaderSecurity</filter-name><
 
 # disable reload & enable rewrite valve
 RUN sed -i "s@<Context>@<Context><Valve className=\"org.apache.catalina.valves.rewrite.RewriteValve\" /> <JarScanner scanClassPath=\"false\" />@g" conf/context.xml
+
+USER 1001
+
+CMD ["bin/catalina.sh" ,"run"]
